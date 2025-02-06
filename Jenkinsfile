@@ -2,7 +2,13 @@ pipeline {
     agent any
 
     stages {
-        cleanWs()
+        stage('Cleanup') {
+            steps {
+                script {
+                    cleanWs()  // Clean workspace before the build starts
+                }
+            }
+        }
         stage('Build') {
             agent {
                 docker {
